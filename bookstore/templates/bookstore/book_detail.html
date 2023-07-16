@@ -1,0 +1,12 @@
+{% extends 'bookstore/layout.html' %}
+{% block content %}
+<h1>detail view</h1>
+<h1>Book:{{book.title}}</h1>
+<P>{{book.image_url}}</P>
+<p>Author:<a href="">{{book.author}}</a></p>
+<p>Genre:{{book.display_genre}}</p>
+<p>language:{{book.language}}</p>
+<p>status:ended at {{book.pub_date}}</p>
+<p>Summary:{{book.summery}}</p>
+{{form}}
+{% endblock content %}
