@@ -1,1 +1,8 @@
 {% extends 'bookstore/layout.html' %}
+{% block content %}
+{% if Author_list %}
+{% for Author in Author_list %}
+<p>Author:<a href="{% url 'bookstore:author_detail' author.id %}">{{Author}}</a></p>
+{% endfor %}
+{% endif %}
+{% endblock content %}

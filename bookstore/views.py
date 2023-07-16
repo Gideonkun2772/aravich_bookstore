@@ -34,14 +34,14 @@ class BookDetailView(generic.DetailView):
             raise Http404('book does not exist')
         return render(request,'bookstore/book_detail.html',{'book':book})
     
-class AutherListView(generic.ListView):
+class AuthorListView(generic.ListView):
     model=Author
     template_name='bookstore/auther.html'
     context_object_name='Author_list'
     def get_context_data(self):
         return Author.objects.all()
 
-class AutherDetail(generic.DetailView):
+class AuthorDetail(generic.DetailView):
     model=Author
     template_name='bookstore/author_detail.html'
     def auther_detail(request,pk):

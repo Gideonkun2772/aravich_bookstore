@@ -3,7 +3,7 @@
 <h1>detail view</h1>
 <h1>Book:{{book.title}}</h1>
 <P>{{book.image_url}}</P>
-<p>Author:<a href="">{{book.author}}</a></p>
+<p>Author:<a href="{% url 'bookstore:author_detail' book.author.id %}">{{book.author}}</a></p>
 <p>Genre:{{book.display_genre}}</p>
 <p>language:{{book.language}}</p>
 <p>status:ended at {{book.pub_date}}</p>
