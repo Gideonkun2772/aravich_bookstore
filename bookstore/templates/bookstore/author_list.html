@@ -2,7 +2,7 @@
 {% block content %}
 {% if Author_list %}
 {% for Author in Author_list %}
-<p>Author:<a href="{% url 'bookstore:author_detail' author.id %}">{{Author}}</a></p>
+<p>Author:<a href="{% url 'bookstore:author_detail' Author.id %}">{{Author}}</a></p>
 {% endfor %}
 {% endif %}
 {% endblock content %}

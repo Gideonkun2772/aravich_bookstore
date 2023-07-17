@@ -36,9 +36,9 @@ class BookDetailView(generic.DetailView):
     
 class AuthorListView(generic.ListView):
     model=Author
-    template_name='bookstore/auther.html'
     context_object_name='Author_list'
-    def get_context_data(self):
+    template_name='bookstore/author_list.html'
+    def get_queryset(self):
         return Author.objects.all()
 
 class AuthorDetail(generic.DetailView):
