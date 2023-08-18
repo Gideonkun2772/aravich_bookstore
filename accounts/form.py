@@ -16,3 +16,4 @@ class registerform(forms.Form):
 class loginform(forms.Form):
     username=forms.CharField(label='username',max_length=50,widget=forms.TextInput(attrs={'placeholder':'enter username'}),required=True)
     password=forms.CharField(required=True,widget=forms.PasswordInput(attrs={'placeholder':'enter password'}))
+

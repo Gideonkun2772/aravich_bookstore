@@ -1,7 +1,9 @@
 from django.db import models
 from django.urls import reverse
+from django.core.files.storage import FileSystemStorage
 
 # Create your models here.
+fs=FileSystemStorage(location="/aravich_bookstore/")
 class Genre(models.Model):
     genre=models.CharField(max_length=35)
     
@@ -9,7 +11,7 @@ class Genre(models.Model):
         return self.genre
     
 class Book(models.Model):
-    image=models.ImageField(upload_to="aravich_bookstore/")
+    image=models.ImageField(storage=fs)
     title=models.CharField(max_length=64)
     pub_date=models.DateField()
     author=models.ForeignKey('Author', on_delete=models.SET_NULL,null=True)

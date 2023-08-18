@@ -1,6 +1,6 @@
 {% extends 'bookstore/layout.html' %}
 {% block content %}
-<form action="register" method="post">
+<form  method="post">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit">

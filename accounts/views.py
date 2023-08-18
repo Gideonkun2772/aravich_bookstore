@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
+from django.contrib import auth
 from .form import registerform,loginform
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -22,6 +23,9 @@ def register(request):
             
     else:
         return render(request,'accounts/register.html',{'form':form})
+    
+    
+    
 def loginview(request):
     if request.method=='GET':
         form=loginform()
@@ -31,8 +35,12 @@ def loginview(request):
         password=request.POST['password']
         user=authenticate(request,username=username,password=password)
         if user is not None:
-            Login(request,user)
+            login(request,user)
             return redirect('/')
        # message.success(request,'')
     else:        
          return render(request,'accounts/login.html',{'form':form(request.POST)})
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
