@@ -1,6 +1,5 @@
-{% extends 'bookstore/layout.html' %} {% block content %}  {% if Books %}
+{% extends 'bookstore/layout.html' %} {% block content %}<h1>book_list</h1>  {% if Books %}
 {% for book in Books %}
-<h1>book_list</h1>
 <ul>
   <li><a href="{% url 'bookstore:book_detail' book.id %}">{{book.title}}</a></li>
 </ul>

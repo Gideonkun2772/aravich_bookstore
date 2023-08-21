@@ -1,8 +1,6 @@
-{% extends 'bookstore/layout.html' %}
-{% block content %}
+<h2>login</h2>
 <form action="loginview" method="post">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit">
 </form>
-{% endblock content %}

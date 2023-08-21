@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book,Genre,Author,BookInstance,Language
+from .models import Book,Genre,Author,BookInstance,Language,Comment
 
 # Register your models here.
 class BookInstanceinline(admin.TabularInline):
@@ -14,6 +14,9 @@ class BookAdmin(admin.ModelAdmin):
 
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
+    pass
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
     pass
 @admin.register(Language)
 class LanguageAdmin(admin.ModelAdmin):

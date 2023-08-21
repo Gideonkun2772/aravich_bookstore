@@ -1,8 +1,8 @@
-{% extends 'bookstore/layout.html' %}
-{% block content %}
+<h1>Register</h1>
 <form  method="post">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit">
 </form>
-{% endblock content %}
+<p>aready have account?... <a href="{% url 'accounts:loginview' %}">login</a></p>
+

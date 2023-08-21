@@ -8,6 +8,15 @@
 <p>Genre:{{book.display_genre}}</p>
 <p>language:{{book.language}}</p>
 <p>status:ended at {{book.pub_date}}</p>
-<p>Summary:{{book.summery}}</p>
-{{form}}
+<p>Summary:{{book.summery}}</p><br><hr>
+<strong><h1>Comments</h1></strong>
+{% if not book.comments.all %}
+    No comments <a href="">add comment</a>
+{% else%}
+ {% for  comment in book.comments.all %}
+ <strong>{{comment.book}}-{{comment.pub_date}}</strong><br>
+ {{comment.body}}
+ <a href="">add comment</a>
+ {% endfor %}
+{% endif%}
 {% endblock content %}

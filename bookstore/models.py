@@ -36,6 +36,18 @@ class Book(models.Model):
 
     display_genre.short_description = 'Genre'
     
+class Comment(models.Model):
+    book=models.ForeignKey(Book, related_name='comments' ,on_delete=models.CASCADE)
+    body=models.TextField()
+    pub_date=models.DateTimeField(auto_now_add=True)
+    
+    class meta:
+        ordering=('-pub_date')
+        
+    def __str__(self):
+        return ' %s - %s' %(self.book.title, self.body)
+    
+    
 class Language(models.Model):
     language=models.CharField(max_length=40)
     
