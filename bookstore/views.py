@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Book,Author,BookInstance
+from .models import Book,Profile,BookInstance
 from django.views import generic
 from django.views.generic import ListView,DetailView
 from django.http import Http404
@@ -9,7 +9,7 @@ from django.http import Http404
 def index(request):
     num_books=Book.objects.all().count()
     bookinstances=BookInstance.objects.filter(status__exact='a').count()
-    num_authors=Author.objects.all().count()
+    num_authors=Profile.objects.all().count()
     context={
         'num_books':num_books,
         'bookinstances':bookinstances,
@@ -34,7 +34,7 @@ class BookDetailView(generic.DetailView):
             raise Http404('book does not exist')
         return render(request,'bookstore/book_detail.html',{'book':book})
     
-class AuthorListView(generic.ListView):
+'''class AuthorListView(generic.ListView):
     model=Author
     context_object_name='Author_list'
     template_name='bookstore/author_list.html'
@@ -49,6 +49,6 @@ class AuthorDetail(generic.DetailView):
             auther=Author.objects.get(pk=pk)
         except Author.doesnotexist:
             raise Http404('Author does not exist')
-        return render(request,'bookstore/author_detail.html',{'author':author})
+        return render(request,'bookstore/author_detail.html',{'author':author})'''
 
     

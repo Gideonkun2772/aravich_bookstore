@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.models import User
 
 # Create your models here.
 fs=FileSystemStorage(location="/aravich_bookstore/")
@@ -14,7 +15,7 @@ class Book(models.Model):
     image=models.ImageField(storage=fs)
     title=models.CharField(max_length=64)
     pub_date=models.DateField()
-    author=models.ForeignKey('Author', on_delete=models.SET_NULL,null=True)
+    author=models.ForeignKey(User, on_delete=models.SET_NULL,null=True)
     isbn=models.CharField(max_length=64,unique=True)
     summery=models.TextField(max_length=200)
     language=models.ForeignKey('Language', on_delete=models.SET_NULL,null=True)
@@ -66,7 +67,7 @@ class BookInstance(models.Model):
         ('r','reserved')
     )
     status=models.CharField(max_length=10,choices=loan_status,default='a')
-    book=models.ForeignKey(Book,on_delete=models.RESTRICT)
+    book=models.ForeignKey(Book,on_delete=models.CASCADE)
     
     due_back=models.DateField(null=True,blank=True)
     
@@ -77,20 +78,20 @@ class BookInstance(models.Model):
     def __str__(self):
         return f'{self.book}'
 
-class Author(models.Model):
-    first_name=models.CharField(max_length=45)
-    last_name=models.CharField(max_length=45)
+class Profile(models.Model):
+    name=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+    bio=models.TextField()
     date_of_birth=models.DateField()
     date_of_death=models.DateField()
     
     class Meta:
-        ordering=('-first_name',)
+        ordering=('-name',)
     
     def __str__(self):
-        return f"{self.first_name}{self.last_name}"
+        return self.name.username
     
-    def get_absolute_url(self):
-        return reverse("auther_detail", kwargs={"pk": self.pk})
+    '''def get_absolute_url(self):
+        return reverse("auther_detail", kwargs={"pk": self.pk})'''
     
     
     

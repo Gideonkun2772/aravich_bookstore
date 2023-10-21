@@ -10,7 +10,7 @@
     <ul>
     <li><a href="{% url 'bookstore:index' %}">home</a></li>
     <li><a href="{% url 'bookstore:book_list' %}">all books</a></li>
-    <li><a href="{% url 'bookstore:author_list' %}">authors</a></li>
+    <!-- <li><a href="{% url 'bookstore:author_list' %}">authors</a></li>-->
     {% if user.is_authenticated %}
     <li>user:{{ user.get_username }}</li>
     <li><a href="{% url 'accounts:logout' %}">logout</a></li>
