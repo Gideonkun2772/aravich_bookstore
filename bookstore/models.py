@@ -15,9 +15,9 @@ class Book(models.Model):
     image=models.ImageField(storage=fs)
     title=models.CharField(max_length=64)
     pub_date=models.DateField()
-    author=models.ForeignKey(User, on_delete=models.SET_NULL,null=True)
+    creator=models.ForeignKey(User, on_delete=models.SET_NULL,null=True,related_name='books')
     isbn=models.CharField(max_length=64,unique=True)
-    summery=models.TextField(max_length=200)
+    summary=models.TextField(max_length=200)
     language=models.ForeignKey('Language', on_delete=models.SET_NULL,null=True)
     genre=models.ManyToManyField(Genre, )
     
@@ -72,8 +72,8 @@ class BookInstance(models.Model):
     due_back=models.DateField(null=True,blank=True)
     
     
-    class Mete:
-        ordering=('status')
+    class Meta:
+        ordering=['status']
     
     def __str__(self):
         return f'{self.book}'
@@ -90,8 +90,8 @@ class Profile(models.Model):
     def __str__(self):
         return self.name.username
     
-    '''def get_absolute_url(self):
-        return reverse("auther_detail", kwargs={"pk": self.pk})'''
+    def get_absolute_url(self):
+        return reverse("bookstore:profile_detail", kwargs={"pk": self.pk})
     
     
     

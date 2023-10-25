@@ -39,16 +39,15 @@ class BookDetailView(generic.DetailView):
     context_object_name='Author_list'
     template_name='bookstore/author_list.html'
     def get_queryset(self):
-        return Author.objects.all()
-
-class AuthorDetail(generic.DetailView):
-    model=Author
-    template_name='bookstore/author_detail.html'
-    def auther_detail(request,pk):
+        return Author.objects.all()'''
+class ProfileDetail(generic.DetailView):
+    model=Profile
+    template_name='bookstore/profile_detail.html'
+    def Profile_detail(request,pk):
         try:
-            auther=Author.objects.get(pk=pk)
-        except Author.doesnotexist:
-            raise Http404('Author does not exist')
-        return render(request,'bookstore/author_detail.html',{'author':author})'''
+            profile=Profile.objects.get(pk=pk)
+        except Profile.doesnotexist:
+            raise Http404('profile does not exist')
+        return render(request,'bookstore/profile_detail.html',{'profile':profile})
 
     

@@ -8,9 +8,9 @@ class BookInstanceinline(admin.TabularInline):
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display=['title','author','language','display_genre']
+    list_display=['title','creator','language','display_genre']
     inlines=[BookInstanceinline]
-    list_filter=['title','genre','author','pub_date']
+    list_filter=['title','genre','creator','pub_date']
 
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
